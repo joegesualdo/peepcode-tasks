@@ -1,9 +1,17 @@
 class PeepcodeTasks.Views.NewTaskView extends Backbone.View
   tagName: 'form'
   template: JST['tasks/new_task']
+  events:
+    'keypress #new-task': 'saveOnEnter'
   render: ->
     $(@el).html @template()
     @
+
+  saveOnEnter: (event) ->
+    if (event.keyCode is 13) #enter key
+      event.preventDefault()
+      if @collection.create({title:$('#new-task').val()})
+        @focus()
   focus: ->
     $('#new-task').val('').focus()
   hideWarning: ->

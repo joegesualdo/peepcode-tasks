@@ -1,6 +1,8 @@
 class PeepcodeTasks.Views.IncompleteTasksView extends Backbone.View
   id: 'tasks-to-complete'
   tagName: 'ul'
+  initialize: ->
+    @collection.on('add', @render, this)
   render: ->
     $(@el).empty()
     for task in @collection.incompleteTasks()
