@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
 
-
   def index
     @tasks = Task.all
 
@@ -24,6 +23,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
+    if @task
+      @task.destroy()
+      render :nothing => true
+    end
   end
 
   def show
