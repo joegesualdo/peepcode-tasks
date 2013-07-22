@@ -1,4 +1,10 @@
 PeepcodeTasks::Application.routes.draw do
+
+  scope '/api/' do
+    resources :tasks
+  end
+
+  root to: 'main#home'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
