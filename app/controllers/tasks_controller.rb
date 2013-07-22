@@ -1,12 +1,26 @@
 class TasksController < ApplicationController
-  respond_to :json
+
 
   def index
     @tasks = Task.all
-    respond_with @tasks
+
+    respond_to do |format|
+      format.html {render json: @tasks}
+    end
+
   end
 
   def update
+    @task = Task.find(params[:id])
+    if @task.update_attributes(params[:task])
+      respond_to do |format|
+        format.html {render json: @task}
+      end
+    else
+      respond_to do |format|
+        format.html {render json: @tasks.errors}
+      end
+    end
   end
 
   def destroy
@@ -14,16 +28,24 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    respond_with @task
+
+    respond_to do |format|
+      format.html {render json: @task}
+    end
+
   end
 
   def create
     @task = Task.new(params[:task])
 
     if @task.save
-      render json: @task
+      respond_to do |format|
+        format.html {render json: @task}
+      end
     else
-      render json: @task.errors
+      respond_to do |format|
+        format.html {render json: @task.errors}
+      end
     end
   end
 
