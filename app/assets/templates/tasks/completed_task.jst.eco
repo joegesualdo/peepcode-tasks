@@ -1,0 +1,4 @@
+<div class="duration">%></div>
+<input class="is-done" type="checkbox" checked />
+<div class="title-done"></div>
+<div class="tag"></div>

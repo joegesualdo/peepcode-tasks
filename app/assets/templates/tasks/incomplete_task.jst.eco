@@ -1,0 +1,4 @@
+<input class="is-done" type="checkbox" />
+<div class="title"><%= @model.title %></div>
+<a class="destroy" title="Destroy">&times;</a>
+<div class="tag"></div>

@@ -1,0 +1,2 @@
+<div class="type">✐</div><input id="new-task" type="text" placeholder="Type a new task..." />
+<div id="warning">Your task is blank! Please type something you want to do.</div>
