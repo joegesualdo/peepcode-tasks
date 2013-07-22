@@ -10,8 +10,11 @@ class PeepcodeTasks.Views.NewTaskView extends Backbone.View
   saveOnEnter: (event) ->
     if (event.keyCode is 13) #enter key
       event.preventDefault()
-      if @collection.create({title:$('#new-task').val()})
+      if @collection.create({title:$('#new-task').val()},{validate: true})
+        @hideWarning()
         @focus()
+      else
+        @flashWarning()
   focus: ->
     $('#new-task').val('').focus()
   hideWarning: ->

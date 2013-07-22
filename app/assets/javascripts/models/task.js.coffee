@@ -17,3 +17,7 @@ class PeepcodeTasks.Models.Task extends Backbone.Model
 
   isCompleted: ->
     @attributes.completedAt
+
+  validate: (attributes) -> #This only takes the attributes that have changed
+    if (!attributes.title)
+      return "Task title must not be blank"
